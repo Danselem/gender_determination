@@ -25,7 +25,6 @@ classes = ['female', 'male']
 def softmax(x):
     return(np.exp(x)/np.exp(x).sum())
 
-# url = 'http://bit.ly/mlbookcamp-pants'
 
 def predict(url):
     X = preprocessor.from_url(url)
@@ -45,13 +44,13 @@ def predict(url):
 
 
 
-def lambda_handler(event, context):
-    url = event['url']
-    result = predict(url)
-    return result
+# def lambda_handler(event, context):
+#     url = event['url']
+#     result = predict(url)
+#     return result
 
 
-app = Flask('gateway')
+app = Flask('lambda')
 
 
 @app.route('/predict', methods=['POST'])
@@ -63,7 +62,7 @@ def predict_endpoint():
 
 
 if __name__ == '__main__':
-    # url = 'http://bit.ly/mlbookcamp-pants'
+    # url = 'gender_eye/test/Image_3.jpg'
     # response = predict(url)
     # print(response)
     app.run(debug=True, host='0.0.0.0', port=9696)

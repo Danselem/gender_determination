@@ -1,8 +1,10 @@
-FROM public.ecr.aws/lambda/python:3.8
+FROM python:3.9-slim
 
 RUN pip install pipenv
 
-RUN pip install https://github.com/alexeygrigorev/tflite-aws-lambda/raw/main/tflite/tflite_runtime-2.7.0-cp38-cp38-linux_x86_64.whl
+RUN pip install tflite-runtime
+
+# RUN pip install --extra-index-url https://google-coral.github.io/py-repo/ tflite-runtime
 
 WORKDIR /app
 
